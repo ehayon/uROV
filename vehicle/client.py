@@ -2,7 +2,7 @@ import socket
 import time
 import sys
 
-HOST, PORT = "localhost", 9999
+HOST, PORT = "localhost", 9002
 data = " ".join(sys.argv[1:])
 
 # Create a socket (SOCK_STREAM means a TCP socket)
@@ -15,10 +15,8 @@ i = 0
 try:
     # Connect to server and send data
     sock.connect((HOST, PORT))
-    while i < 2000:
-        sock.send(str(i)+'\n')
-        i = i + 1        
-        time.sleep(0.01)
+    i = 2.5
+    sock.sendall(str(data)+'\n')
     # Receive data from the server and shut down
 finally:
     sock.close()

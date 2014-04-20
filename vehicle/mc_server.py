@@ -4,6 +4,8 @@ import threading
 
 global_var = "Test"
 
+
+
 class MCHandler(SocketServer.BaseRequestHandler):
 
   def handle(self):
@@ -26,7 +28,7 @@ class ThrusterController:
   def run(self):
     while True:
       print(global_var)
-      time.sleep(0.1)
+      time.sleep(0.01)
 
 if __name__ == "__main__":
   HOST, PORT = "0.0.0.0", 9999
