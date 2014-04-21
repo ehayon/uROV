@@ -5,7 +5,6 @@ import global_vars
 
 class Robot:
 
-  global thrust_port
   def run(self):
 
     mc = MissionControlServer()
@@ -15,7 +14,7 @@ class Robot:
     mc_thread.start()
   
     while True:
-      print "Data = %.2f" % global_vars.thrust_port
+      print "Data = %.2f" % global_vars.thrust['port']
       time.sleep(1)
 
 if __name__=="__main__":

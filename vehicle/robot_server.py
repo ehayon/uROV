@@ -13,8 +13,14 @@ class MissionControlServerHandler(SocketServer.BaseRequestHandler):
 
       if not self.data: break
 
-      print "received: " + self.data
-      global_vars.thrust_port = float(self.data)
+      cmd = self.data.split()
+      if cmd[0] == '/set_thrust':
+        global_vars.thrust['port'] = float(cmd[1].split(',')[0])
+        global_vars.thrust['starboard'] = float(cmd[1].split(',')[1])
+        global_vars.thrust['heave_bow'] = float(cmd[1].split(',')[2])
+        global_vars.thrust['heave_stern'] = float(cmd[1].split(',')[3])
+        print "Updated thrust vector to [%s]" % cmd[1]
+      # global_vars.thrust_port = float(self.data)
       # just send back the same data, but upper-cased
 
 
